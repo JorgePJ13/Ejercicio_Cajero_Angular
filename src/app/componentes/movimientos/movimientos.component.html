@@ -1,0 +1,33 @@
+<div>
+  <form (ngSubmit)="consultarMovimientos()">
+    <div class="fechas">
+      <button type="button" disabled>Desde</button>
+      <input type="date" placeholder="Fecha de Inicio" name="fechaIni" [(ngModel)]="fechaIni">
+    </div>
+    <div class="fechas">
+      <button type="button" disabled>Hasta&nbsp;</button>
+      <input type="date" placeholder="Fecha de Fin" name="fechaFin" [(ngModel)]="fechaFin">
+    </div>
+    <br> <br>
+    <input type="submit" value="Ver Movimientos"/>
+  </form>
+  <br> <br>
+  <h3>Saldo:{{cuenta.saldo}}</h3>
+  <br> <br>
+  <table border="2" *ngIf="movimientos">
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Operación</th>
+        <th>Fecha</th></thead>
+    <tbody >
+      <tr *ngFor="let m of movimientos">
+        <td>{{m.cantidad}}</td>
+        <td>{{m.operacion}}</td>
+        <td>{{toDate(m.fecha)}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br> <br> <br>
+  <a href="menu.jsp">Volver</a>
+</div>
